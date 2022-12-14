@@ -1,0 +1,71 @@
+:root {
+    --background-color: hsl(49, 37%, 94%);
+    --typewriterSpeed: 5s;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--background-color);
+}
+
+h1 {
+    font-family: monospace;
+    font-weight: lighter;
+    position: relative;
+}
+
+h2 {
+    font-weight: lighter;
+    transform: translateY(3rem);
+    opacity: 0;
+    animation: upDraft 10s ease 6s forwards;
+}
+
+h1::before,
+h1:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+h1::before {
+    background: white;
+    animation: typewriter var(--typewriterSpeed) steps(23) 1s forwards;
+    background: var(--background-color);
+}
+
+h1::after {
+    width: 4px;
+    background: black;
+    animation:
+        typewriter var(--typewriterSpeed) steps(23) 1s forwards,
+        blink 500ms steps(23) infinite;
+}
+
+@keyframes typewriter {
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes blink {
+    100% {
+        background: transparent;
+    }
+}
+
+@keyframes upDraft {
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
